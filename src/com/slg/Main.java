@@ -77,6 +77,7 @@ public class Main {
 //        relationFinder("Geros Makris","Panos Makris");
 //        relationFinder("Tasos Makris","Panos Makris");
         relationFinder("Panos Makris","Tasos Makris");
+        relationFinder("Elli Makri","Kostas Makris");
     }
 
     private static void relationFinder(String name1, String name2) {
@@ -214,6 +215,16 @@ public class Main {
         if (p1.getFather() != null) {
             if (p1.getFather().siblings.size() > 0) {
                 for (Person sibling : p1.getFather().siblings) {
+                    if (sibling.name.equals(p2.name)) {
+                        System.out.println(p1.name + " anipsi of " + p2.name);
+                    }
+                }
+            }
+        }
+
+        if (p1.getMother() != null) {
+            if (p1.getMother().siblings.size() > 0) {
+                for (Person sibling : p1.getMother().siblings) {
                     if (sibling.name.equals(p2.name)) {
                         System.out.println(p1.name + " anipsi of " + p2.name);
                     }
