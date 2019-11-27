@@ -11,7 +11,7 @@ public class Main {
 
     public static void main(String[] args) {
         // write your code here
-        File file = new File("C:\\Users\\pmakris\\Desktop\\test.csv");
+        File file = new File("C:\\Users\\pmakris\\Desktop\\ergasia.csv");
         allPersons = new ArrayList<>();
 
 
@@ -59,25 +59,43 @@ public class Main {
         }
 
         System.out.println("All persons are: " + allPersons.size());
-//        printSiblings("Kostas Makris");
-//        printMarried("Kostas Makris");
-//        printChildren("Kostas Makris");
-//        printChildren("Athina Pantsou");
 
-//        relationFinder("Venetsiana Makri","Paris Makris");
-//        relationFinder("Kostas Makris","Paris Makris");
-//        relationFinder("Athina Pantsou","Venetsiana Makri");
-//        relationFinder("Paris Makris","Kostas Makris");
-//        relationFinder("Kostas Makris","Paris Makris");
-//        relationFinder("Venetsiana Makri","Kostas Makris");
-//        relationFinder("Panos Makris","Kostas Makris");
-//        relationFinder("Elli Makri","Panos Makris");
-//        relationFinder("Panos Makris","Gria Makri");
-//        relationFinder("Panagiotis Makris","Gria Makri");
-//        relationFinder("Geros Makris","Panos Makris");
-//        relationFinder("Tasos Makris","Panos Makris");
-        relationFinder("Panos Makris","Tasos Makris");
-        relationFinder("Elli Makri","Kostas Makris");
+
+        //Father/son
+//        relationFinder("Grandpa Duck","Quackmore Duck");
+//        relationFinder("Quackmore Duck","Grandpa Duck");
+
+        //Siblings
+//        relationFinder("1 (Duck) Von Drake","Quackmore Duck");
+//        relationFinder("Quackmore Duck","1 (Duck) Von Drake");
+
+        //Ksaderfia -- NOT WORKING --> WORKING NOW
+//        relationFinder("May","Huey Duck");
+//        relationFinder("Huey Duck","May");
+
+        //Husband
+//        relationFinder("Quackmore Duck","Hortense (McDuck) Duck");
+//        relationFinder("Hortense (McDuck) Duck","Quackmore Duck");
+
+        //Grandpa
+//        relationFinder("Quackmore Duck","Louie Duck");
+//        relationFinder("Grandma Duck","Gus Goose");
+
+        //Eggonos -- NOT WORKING -- > ALSO WORKING NOW
+        relationFinder("Louie Duck","Quackmore Duck");
+        relationFinder("Gus Goose","Grandma Duck");
+
+        //Anipsi
+//        relationFinder("Louie Duck","Daisy Duck");
+//        relationFinder("Gus Goose","Quackmore Duck");
+
+        //Uncle
+//        relationFinder("Daisy Duck","Louie Duck");
+//        relationFinder("Quackmore Duck","Gus Goose");
+
+        //Not related
+        relationFinder("Daisy Duck","Quackmore Duck");
+
     }
 
     private static void relationFinder(String name1, String name2) {
@@ -146,24 +164,37 @@ public class Main {
             }
         }
 
+        if (p1.getMother() != null) {
+            for (Person sibling : p1.getMother().siblings) {
+                for (Person child : sibling.children) {
+                    if (child.name.equals(p2.name)) {
+                        System.out.println(p1.name + " is cousin with " + p2.name + " from " + p1.getMother().name + " and " + sibling.name);
+                    }
+                }
+            }
+        }
+
+
+
         //Eggonia
         if (p1.getFather() != null) {
             if (p1.getFather().getFather() != null) {
                 if (p1.getFather().getFather().name.equals(p2.name)) {
-                    System.out.println(p1.name + " eggonos toy " + p2.name );
+                    System.out.println(p1.name + " eggonos toy " + p2.name);
                 }
                 if (p1.getFather().getMother().name.equals(p2.name)) {
-                    System.out.println(p1.name + " eggonos ths " + p2.name );
+                    System.out.println(p1.name + " eggonos ths " + p2.name);
                 }
             } else if (p1.getFather().getMother() != null) {
                 if (p1.getFather().getFather().name.equals(p2.name)) {
-                    System.out.println(p1.name + " eggonos toy " + p2.name );
+                    System.out.println(p1.name + " eggonos toy " + p2.name);
                 }
                 if (p1.getFather().getMother().name.equals(p2.name)) {
-                    System.out.println(p1.name + " eggonos ths " + p2.name );
+                    System.out.println(p1.name + " eggonos ths " + p2.name);
                 }
             }
-        } else if (p1.getMother() != null) {
+        }
+        if (p1.getMother() != null) {
             if (p1.getMother().getMother() != null) {
                 if (p1.getMother().getMother().name.equals(p2.name)) {
                     System.out.println(p1.name + " eggonos ths " + p2.name);
@@ -171,7 +202,7 @@ public class Main {
                 if (p1.getMother().getFather().name.equals(p2.name)) {
                     System.out.println(p1.name + " eggonos tou " + p2.name);
                 }
-            }else if (p1.getMother().getFather() != null) {
+            } else if (p1.getMother().getFather() != null) {
                 if (p1.getMother().getMother().name.equals(p2.name)) {
                     System.out.println(p1.name + " eggonos ths " + p2.name);
                 }
@@ -232,41 +263,6 @@ public class Main {
             }
         }
 
-
-
-
-
-    }
-
-    private static void printMarried(String name) {
-        Person p = getPersonByName(name);
-        if (p.married.size() > 0) {
-            for (Person married : p.married) {
-                System.out.println(p.name + " is married with " + married.name);
-            }
-        }
-    }
-
-    private static void printChildren(String name) {
-        Person p = getPersonByName(name);
-        if (p.children.size() > 0) {
-            System.out.println(p.name + " chlidrens are: " + Arrays.toString( p.children.toArray() ));
-//            for (Person child : p.children) {
-//                System.out.println(p.name + " chlidrens are: " + child.name);
-//            }
-        }
-
-    }
-
-    private static void printSiblings(String name) {
-        Person p = getPersonByName(name);
-        if (p.siblings.size() > 0) {
-            for (Person sibling : p.siblings) {
-                System.out.println(p.name + " brother is: " + sibling.name);
-            }
-        } else {
-            System.out.println(p.name + " has no siblings");
-        }
     }
 
     private static Person getPersonByName(String name) {
