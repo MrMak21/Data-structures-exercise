@@ -3,6 +3,8 @@ package com.slg;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import static com.slg.Main.endGraph;
+
 public class MainMenu {
 
     String value1,value2;
@@ -10,6 +12,7 @@ public class MainMenu {
     public MainMenu() {
         Main.allPersons = new ArrayList<>();
         Main.readFamilyTree();
+        endGraph();
     }
 
     public void showMenu() {
