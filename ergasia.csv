@@ -1,0 +1,97 @@
+Grandpa Duck;male;
+Grandma Duck;female;
+Ludwiq Von Drake;male;
+1 (Duck) Von Drake;female;
+2 Goose;male;
+Fanny (Duck) Goose;female;
+Quackmore Duck;male;
+Hortense (McDuck) Duck;female;
+3 Gander;male;
+4 (McDuck) Gander;female;
+Scrooge McDuck;male;
+Gus Goose;male;
+5;male;
+6 (Duck) 6;female;
+Daisy Duck;female;
+7 Duck;male;
+Dumbella (Duck) Duck;female;
+Donald Fauntleroy Duck;male;
+April;female;
+May;female;
+June;female;
+Huey Duck;male;
+Dewey Duck;male;
+Louie Duck;male;
+Gladstone Gander;male;
+Grandpa Duck;married;Grandma Duck
+Grandma Duck;married;Grandpa Duck
+Grandpa Duck;father;1 (Duck) Von Drake
+Grandpa Duck;father;Fanny (Duck) Goose
+Grandpa Duck;father;Quackmore Duck
+Grandma Duck;mother;1 (Duck) Von Drake
+Grandma Duck;mother;Fanny (Duck) Goose
+Grandma Duck;mother;Quackmore Duck
+Ludwiq Von Drake;married;1 (Duck) Von Drake
+1 (Duck) Von Drake;married;Ludwiq Von Drake
+2 Goose;married;Fanny (Duck) Goose
+Fanny (Duck) Goose;married;2 Goose
+2 Goose;father;Gus Goose
+Fanny (Duck) Goose;mother;Gus Goose
+1 (Duck) Von Drake;siblings;Fanny (Duck) Goose
+1 (Duck) Von Drake;siblings;Quackmore Duck
+Fanny (Duck) Goose;siblings;1 (Duck) Von Drake
+Fanny (Duck) Goose;siblings;Quackmore Duck
+Quackmore Duck;siblings;Fanny (Duck) Goose
+Quackmore Duck;siblings;1 (Duck) Von Drake
+Quackmore Duck;married;Hortense (McDuck) Duck
+Hortense (McDuck) Duck;married;Quackmore Duck
+Quackmore Duck;father;Dumbella (Duck) Duck
+Quackmore Duck;father;Donald Fauntleroy Duck
+Hortense (McDuck) Duck;mother;Dumbella (Duck) Duck
+Hortense (McDuck) Duck;mother;Donald Fauntleroy Duck
+Dumbella (Duck) Duck;siblings;Donald Fauntleroy Duck
+Donald Fauntleroy Duck;siblings;Dumbella (Duck) Duck
+Hortense (McDuck) Duck;siblings;4 (McDuck) Gander
+Hortense (McDuck) Duck;siblings;Scrooge McDuck
+4 (McDuck) Gander;siblings;Hortense (McDuck) Duck
+4 (McDuck) Gander;siblings;Scrooge McDuck
+Scrooge McDuck;siblings;4 (McDuck) Gander
+Scrooge McDuck;siblings;Hortense (McDuck) Duck
+3 Gander;married;4 (McDuck) Gander
+4 (McDuck) Gander;married;3 Gander
+3 Gander;father;Gladstone Gander
+4 (McDuck) Gander;mother;Gladstone Gander
+Dumbella (Duck) Duck;married;7 Duck
+7 Duck;married;Dumbella (Duck) Duck
+7 Duck;father;Huey Duck
+7 Duck;father;Dewey Duck
+7 Duck;father;Louie Duck
+Dumbella (Duck) Duck;mother;Huey Duck
+Dumbella (Duck) Duck;mother;Dewey Duck
+Dumbella (Duck) Duck;mother;Louie Duck
+Huey Duck;siblings;Dewey Duck
+Huey Duck;siblings;Louie Duck
+Dewey Duck;siblings;Huey Duck
+Dewey Duck;siblings;Louie Duck
+Louie Duck;siblings;Huey Duck
+Louie Duck;siblings;Dewey Duck
+7 Duck;siblings;Daisy Duck
+7 Duck;siblings;6 (Duck) 6
+Daisy Duck;siblings;6 (Duck) 6
+Daisy Duck;siblings;7 Duck
+6 (Duck) 6;siblings;Daisy Duck
+6 (Duck) 6;siblings;7 Duck
+6 (Duck) 6;married;5
+5;married;6 (Duck) 6
+5;father;April
+5;father;May
+5;father;June
+6 (Duck) 6;mother;April
+6 (Duck) 6;mother;May
+6 (Duck) 6;mother;June
+May;siblings;April
+May;siblings;June
+April;siblings;May
+April;siblings;June
+June;siblings;May
+June;siblings;April

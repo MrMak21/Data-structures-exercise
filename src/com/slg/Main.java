@@ -2,6 +2,7 @@ package com.slg;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Comparator;
 
 public class Main {
 
@@ -13,87 +14,67 @@ public class Main {
 
     public static void main(String[] args) {
 
+        findPath();
+
         sb1 = new StringBuilder("digraph G { ");
-
-
         MainMenu menu = new MainMenu();
         menu.showMenu();
 
-
         System.out.println("All persons are: " + allPersons.size());
-
-
-        //Father/son
-//        relationFinder("Grandpa Duck","Quackmore Duck");
-//        relationFinder("Quackmore Duck","Grandpa Duck");
-
-        //Siblings
-//        relationFinder("1 (Duck) Von Drake","Quackmore Duck");
-//        relationFinder("Quackmore Duck","1 (Duck) Von Drake");
-
-        //Ksaderfia -- NOT WORKING --> WORKING NOW
-//        relationFinder("May","Huey Duck");
-//        relationFinder("Huey Duck","May");
-
-        //Husband
-//        relationFinder("Quackmore Duck","Hortense (McDuck) Duck");
-//        relationFinder("Hortense (McDuck) Duck","Quackmore Duck");
-
-        //Grandpa
-//        relationFinder("Quackmore Duck","Louie Duck");
-//        relationFinder("Grandma Duck","Gus Goose");
-
-        //Eggonos -- NOT WORKING -- > ALSO WORKING NOW
-//        relationFinder("Louie Duck","Quackmore Duck");
-//        relationFinder("Gus Goose","Grandma Duck");
-
-        //Anipsi
-//        relationFinder("Louie Duck","Daisy Duck");
-//        relationFinder("Gus Goose","Quackmore Duck");
-
-        //Uncle
-//        relationFinder("Daisy Duck","Louie Duck");
-//        relationFinder("Quackmore Duck","Gus Goose");
-
-        //Not related -- NOT WORKING
-//        relationFinder("Daisy Duck","Quackmore Duck");
-
+        writeFileForPeople(allPersons);
     }
 
-//    public static void createDotGraph(String dotFormat,String fileName)
-//    {
-//        Graphviz gv = new Graphviz();
-//
-//        //GraphViz gv=new GraphViz();
-//        gv.addln(gv.start_graph());
-//        gv.add(dotFormat);
-//        gv.addln(gv.end_graph());
-//        // String type = "gif";
-//        String type = "pdf";
-//        // gv.increaseDpi();
-//        gv.decreaseDpi();
-//        gv.decreaseDpi();
-//        File out = new File(fileName+"."+ type);
-//        gv.writeGraphToFile( gv.getGraph( gv.getDotSource(), type ), out );
-//    }
+    private static String findPath() {
 
-//    public static void ex2() {
-//        final Node
-//                init = node("init"),
-//                execute = node("execute"),
-//                compare = node("compare").with(Shape.RECTANGLE, Style.FILLED, Color.hsv(.7, .3, 1.0)),
-//                make_string = node("make_string"),
-//                printf = node("printf");
-//        final Graph g = graph("ex2").directed().with(
-//                node("main").with(Shape.RECTANGLE).link(
-//                        to(node("parse").link(execute)).with("weight", 8),
-//                        to(init).with(Style.DOTTED),
-//                        node("cleanup"),
-//                        to(printf).with(Style.BOLD, Label.of("100 times"), Color.RED)),
-//                execute.link(graph().with(make_string, printf), to(compare).with(Color.RED)),
-//                init.link(make_string.with(Label.of("make a\nstring"))));
-//        Graphviz.fromGraph(g).render(SVG).toString();
-//    }
+        String currentDir = System.getProperty("user.dir");
+//        System.out.println("Current dir using System: " + currentDir);
+
+        return currentDir;
+    }
+
+
+    private static void writeFileForPeople(ArrayList<Person> persons) {
+        persons.sort(new Comparator<Person>() {
+            @Override
+            public int compare(Person o1, Person o2) {
+                return o1.name.compareTo(o2.name);
+            }
+        });
+
+        writeToFile(persons);
+    }
+
+    private static void writeToFile(ArrayList<Person> persons) {
+        PrintWriter writer = null;
+        PrintWriter writer2 = null;
+        try {
+            writer = new PrintWriter( findPath() + "\\personsSortedList.txt", "UTF-8");
+            writer2 = new PrintWriter(findPath() + "\\graph.dot", "UTF-8");
+            writer2.println(sb1.toString());
+            for (Person person : persons) {
+                writer.println(person.name + " " + person.sex);
+            }
+            generatePngFile();
+        } catch (FileNotFoundException | UnsupportedEncodingException e) {
+            e.printStackTrace();
+        } finally {
+            writer.close();
+            writer2.close();
+        }
+    }
+
+    private static void generatePngFile() {
+        String imageName = "\\generatedGraph.png";
+        String cmd = findPath() + "\\graphViz\\release\\bin\\dot -Tpng -o " + findPath() + imageName + " " +  findPath() + "\\graph.dot";
+        String openImage = findPath() + imageName;
+        try {
+            Process p = Runtime.getRuntime().exec(cmd);
+            //open png file
+//            Process a = Runtime.getRuntime().exec(openImage);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     public static void addToGraph(String name1, String name2, String relation) {
         if (relation.equals(GraphVizUtils.MARRIED)) {
@@ -114,7 +95,7 @@ public class Main {
     }
 
     public static void readFamilyTree() {
-        File file = new File("C:\\Users\\pmakris\\Desktop\\ergasia.csv");
+        File file = new File(findPath() + "\\ergasia.csv");
         try {
             BufferedReader csvReader = new BufferedReader(new FileReader(file));
             String row;
