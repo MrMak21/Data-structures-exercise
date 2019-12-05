@@ -1,5 +1,7 @@
 package com.slg;
 
+import org.junit.Test;
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -14,6 +16,8 @@ public class Main {
 
     public static void main(String[] args) {
 
+        Gui gui = new Gui();
+        gui.showGui();
         findPath();
 
         sb1 = new StringBuilder("digraph G { ");
@@ -33,7 +37,7 @@ public class Main {
     }
 
 
-    private static void writeFileForPeople(ArrayList<Person> persons) {
+    public static void writeFileForPeople(ArrayList<Person> persons) {
         persons.sort(new Comparator<Person>() {
             @Override
             public int compare(Person o1, Person o2) {
@@ -46,33 +50,38 @@ public class Main {
 
     private static void writeToFile(ArrayList<Person> persons) {
         PrintWriter writer = null;
-        PrintWriter writer2 = null;
+//        PrintWriter writer2 = null;
         try {
             writer = new PrintWriter( findPath() + "\\personsSortedList.txt", "UTF-8");
-            writer2 = new PrintWriter(findPath() + "\\graph.dot", "UTF-8");
-            writer2.println(sb1.toString());
+//            writer2 = new PrintWriter(findPath() + "\\graph.dot", "UTF-8");
+//            writer2.println(sb1.toString());
             for (Person person : persons) {
                 writer.println(person.name + " " + person.sex);
             }
-            generatePngFile();
+//            generatePngFile();
         } catch (FileNotFoundException | UnsupportedEncodingException e) {
             e.printStackTrace();
         } finally {
             writer.close();
-            writer2.close();
+//            writer2.close();
         }
     }
 
-    private static void generatePngFile() {
+    public static void generatePngFile() {
+        PrintWriter writer2 = null;
         String imageName = "\\generatedGraph.png";
         String cmd = findPath() + "\\graphViz\\release\\bin\\dot -Tpng -o " + findPath() + imageName + " " +  findPath() + "\\graph.dot";
         String openImage = findPath() + imageName;
         try {
+            writer2 = new PrintWriter(findPath() + "\\graph.dot", "UTF-8");
+            writer2.println(sb1.toString());
             Process p = Runtime.getRuntime().exec(cmd);
             //open png file
 //            Process a = Runtime.getRuntime().exec(openImage);
         } catch (IOException e) {
             e.printStackTrace();
+        }finally {
+            writer2.close();
         }
     }
 
@@ -144,9 +153,10 @@ public class Main {
     }
 
 
-    public static void relationFinder(String name1, String name2) {
+    public static String relationFinder(String name1, String name2) {
         Person p1 = getPersonByName(name1);
         Person p2 = getPersonByName(name2);
+        String result = null;
 
 
         if (p1 != null && p2 != null) {
@@ -155,9 +165,11 @@ public class Main {
                 if (p1.getFather().name.equals(p2.name)) {
                     if (p1.sex.equals("male")) {
                         System.out.println(p1.name + " is son of " + p2.name);
+                        result = p1.name + " is son of " + p2.name;
                         isFound = true;
                     } else {
                         System.out.println(p1.name + " is daughter of " + p2.name);
+                        result = p1.name + " is daughter of " + p2.name;
                         isFound = true;
                     }
                 }
@@ -168,9 +180,11 @@ public class Main {
                 if (p1.getMother().name.equals(p2.name)) {
                     if (p1.sex.equals("male")) {
                         System.out.println(p1.name + " is son of " + p2.name);
+                        result = p1.name + " is son of " + p2.name;
                         isFound = true;
                     } else {
                         System.out.println(p1.name + " is daughter of " + p2.name);
+                        result = p1.name + " is daughter of " + p2.name;
                         isFound = true;
                     }
                 }
@@ -181,9 +195,11 @@ public class Main {
                 if (child.name.equals(p2.name)) {
                     if (p1.sex.equals("male")) {
                         System.out.println(p1.name + " is father of " + p2.name);
+                        result = p1.name + " is father of " + p2.name;
                         isFound = true;
                     } else {
                         System.out.println(p1.name + " is mother of " + p2.name);
+                        result = p1.name + " is mother of " + p2.name;
                         isFound = true;
                     }
                 }
@@ -193,6 +209,7 @@ public class Main {
             for (Person person : p1.married) {
                 if (person.name.equals(p2.name)) {
                     System.out.println(p1.name + " is married with " + p2.name);
+                    result = p1.name + " is married with " + p2.name;
                     isFound = true;
                 }
             }
@@ -202,9 +219,11 @@ public class Main {
                 if (sibling.name.equals(p2.name)) {
                     if (p1.sex.equals("male")) {
                         System.out.println(p1.name + " is brother of " + p2.name);
+                        result = p1.name + " is brother of " + p2.name;
                         isFound = true;
                     } else {
                         System.out.println(p1.name + " is sister of " + p2.name);
+                        result = p1.name + " is sister of " + p2.name;
                         isFound = true;
                     }
                 }
@@ -216,6 +235,7 @@ public class Main {
                     for (Person child : sibling.children) {
                         if (child.name.equals(p2.name)) {
                             System.out.println(p1.name + " is cousin with " + p2.name + " from " + p1.getFather().name + " and " + sibling.name);
+                            result = p1.name + " is cousin with " + p2.name + " from " + p1.getFather().name + " and " + sibling.name;
                             isFound = true;
                         }
                     }
@@ -227,6 +247,7 @@ public class Main {
                     for (Person child : sibling.children) {
                         if (child.name.equals(p2.name)) {
                             System.out.println(p1.name + " is cousin with " + p2.name + " from " + p1.getMother().name + " and " + sibling.name);
+                            result = p1.name + " is cousin with " + p2.name + " from " + p1.getMother().name + " and " + sibling.name;
                             isFound = true;
                         }
                     }
@@ -239,19 +260,23 @@ public class Main {
                 if (p1.getFather().getFather() != null) {
                     if (p1.getFather().getFather().name.equals(p2.name)) {
                         System.out.println(p1.name + " eggonos toy " + p2.name);
+                        result = p1.name + " eggonos toy " + p2.name;
                         isFound = true;
                     }
                     if (p1.getFather().getMother().name.equals(p2.name)) {
                         System.out.println(p1.name + " eggonos ths " + p2.name);
+                        result = p1.name + " eggonos ths " + p2.name;
                         isFound = true;
                     }
                 } else if (p1.getFather().getMother() != null) {
                     if (p1.getFather().getFather().name.equals(p2.name)) {
                         System.out.println(p1.name + " eggonos toy " + p2.name);
+                        result = p1.name + " eggonos toy " + p2.name;
                         isFound = true;
                     }
                     if (p1.getFather().getMother().name.equals(p2.name)) {
                         System.out.println(p1.name + " eggonos ths " + p2.name);
+                        result = p1.name + " eggonos ths " + p2.name;
                         isFound = true;
                     }
                 }
@@ -260,19 +285,23 @@ public class Main {
                 if (p1.getMother().getMother() != null) {
                     if (p1.getMother().getMother().name.equals(p2.name)) {
                         System.out.println(p1.name + " eggonos ths " + p2.name);
+                        result = p1.name + " eggonos ths " + p2.name;
                         isFound = true;
                     }
                     if (p1.getMother().getFather().name.equals(p2.name)) {
                         System.out.println(p1.name + " eggonos tou " + p2.name);
+                        result = p1.name + " eggonos tou " + p2.name;
                         isFound = true;
                     }
                 } else if (p1.getMother().getFather() != null) {
                     if (p1.getMother().getMother().name.equals(p2.name)) {
                         System.out.println(p1.name + " eggonos ths " + p2.name);
+                        result = p1.name + " eggonos ths " + p2.name;
                         isFound = true;
                     }
                     if (p1.getMother().getFather().name.equals(p2.name)) {
                         System.out.println(p1.name + " eggonos tou " + p2.name);
+                        result = p1.name + " eggonos tou " + p2.name;
                         isFound = true;
                     }
                 }
@@ -286,9 +315,11 @@ public class Main {
                             if (person.name.equals(p2.name)) {
                                 if (p1.sex.equals("male")) {
                                     System.out.println(p1.name + " grandpa of " + p2.name);
+                                    result = p1.name + " grandpa of " + p2.name;
                                     isFound = true;
                                 } else {
                                     System.out.println(p1.name + " grandmother of " + p2.name);
+                                    result = p1.name + " grandmother of " + p2.name;
                                     isFound = true;
                                 }
                             }
@@ -304,6 +335,7 @@ public class Main {
                         for (Person child : sibling.children) {
                             if (child.name.equals(p2.name)) {
                                 System.out.println(p1.name + " Unlce of " + p2.name);
+                                result = p1.name + " Unlce of " + p2.name;
                                 isFound = true;
                             }
                         }
@@ -317,6 +349,7 @@ public class Main {
                     for (Person sibling : p1.getFather().siblings) {
                         if (sibling.name.equals(p2.name)) {
                             System.out.println(p1.name + " anipsi of " + p2.name);
+                            result = p1.name + " anipsi of " + p2.name;
                             isFound = true;
                         }
                     }
@@ -328,6 +361,7 @@ public class Main {
                     for (Person sibling : p1.getMother().siblings) {
                         if (sibling.name.equals(p2.name)) {
                             System.out.println(p1.name + " anipsi of " + p2.name);
+                            result = p1.name + " anipsi of " + p2.name;
                             isFound = true;
                         }
                     }
@@ -337,15 +371,20 @@ public class Main {
             //Not related
             if (!isFound) {
                 System.out.println(p1.name + " and " + p2.name + " are not related!");
+                result = p1.name + " and " + p2.name + " are not related!";
             }
         } else {
             if (p1 == null) {
                 System.out.println("Cannot find person  " + name1);
+                result = "Cannot find person  " + name1;
             }
             if (p2 == null) {
                 System.out.println("Cannot find person " + name2);
+                result = "Cannot find person " + name2;
             }
         }
+
+        return result;
 
     }
 
@@ -358,5 +397,23 @@ public class Main {
         }
 
         return null;
+    }
+
+
+    @Test
+    public void all_with_all() {
+
+        //Some initialization for functions
+        sb1 = new StringBuilder("digraph G { ");
+        allPersons = new ArrayList<>();
+        readFamilyTree();
+
+        for (Person person1 : allPersons) {
+            for (Person person2 : allPersons) {
+                if (!person2.name.equals(person1.name)) {
+                    relationFinder(person2.name,person1.name);
+                }
+            }
+        }
     }
 }
