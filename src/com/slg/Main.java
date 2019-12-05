@@ -28,7 +28,7 @@ public class Main {
         writeFileForPeople(allPersons);
     }
 
-    private static String findPath() {
+    public static String findPath() {
 
         String currentDir = System.getProperty("user.dir");
 //        System.out.println("Current dir using System: " + currentDir);
@@ -376,11 +376,15 @@ public class Main {
         } else {
             if (p1 == null) {
                 System.out.println("Cannot find person  " + name1);
-                result = "Cannot find person  " + name1;
+                result = "Cannot find person " + name1;
             }
             if (p2 == null) {
                 System.out.println("Cannot find person " + name2);
-                result = "Cannot find person " + name2;
+                if (result == null){
+                    result = "Cannot find person " + name2;
+                } else {
+                    result += " and " + name2;
+                }
             }
         }
 

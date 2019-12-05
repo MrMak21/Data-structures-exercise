@@ -2,14 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="13416a8f-244c-410c-8b70-cc6775eafe8b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/junit-4.7.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/junit_4_7.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/slg/Gui.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CsvProject.iml" beforeDir="false" afterPath="$PROJECT_DIR$/CsvProject.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CsvProject/com/slg/Main$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CsvProject/com/slg/Main$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CsvProject/com/slg/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CsvProject/com/slg/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CsvProject/com/slg/MainMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CsvProject/com/slg/MainMenu.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/slg/Gui.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/slg/Gui.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/slg/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/slg/Main.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -41,8 +34,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/slg/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="299">
-              <caret line="409" lean-forward="true" selection-start-line="409" selection-end-line="409" />
+            <state relative-caret-position="252">
+              <caret line="378" column="45" lean-forward="true" selection-start-line="378" selection-start-column="45" selection-end-line="378" selection-end-column="45" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1089#1090#0" expanded="true" />
@@ -67,8 +60,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/slg/Gui.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="469">
-              <caret line="118" lean-forward="true" selection-start-line="118" selection-end-line="118" />
+            <state relative-caret-position="112">
+              <caret line="113" column="53" lean-forward="true" selection-start-line="113" selection-start-column="53" selection-end-line="113" selection-end-column="53" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1419#1420#0" expanded="true" />
@@ -77,12 +70,9 @@
                 <element signature="e#1309#1310#0" expanded="true" />
                 <element signature="e#962#963#0" expanded="true" />
                 <element signature="e#1005#1006#0" expanded="true" />
-                <element signature="e#1635#1636#0" expanded="true" />
-                <element signature="e#1685#1686#0" expanded="true" />
-                <element signature="e#2346#2347#0" expanded="true" />
-                <element signature="e#2365#2366#0" expanded="true" />
-                <element signature="e#2989#2990#0" expanded="true" />
-                <element signature="e#3027#3028#0" expanded="true" />
+                <element signature="e#3551#3552#0" expanded="true" />
+                <element signature="e#3648#3649#0" expanded="true" />
+                <element signature="e#3723#3724#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -110,6 +100,7 @@
     <findStrings>
       <find>config.</find>
       <find>temp</find>
+      <find>findPa</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -164,12 +155,6 @@
             </path>
             <path>
               <item name="CsvProject" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CsvProject" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="slg" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CsvProject" type="b2602c69:ProjectViewProjectNode" />
               <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
             </path>
           </expand>
@@ -211,7 +196,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.Main.all_with_all">
+  <component name="RunManager" selected="Application.Main">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true">
       <option name="MAIN_CLASS_NAME" value="com.slg.Main" />
       <module name="CsvProject" />
@@ -240,8 +225,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.Main.all_with_all" />
         <item itemvalue="Application.Main" />
+        <item itemvalue="JUnit.Main.all_with_all" />
       </list>
     </recent_temporary>
   </component>
@@ -262,7 +247,7 @@
       <workItem from="1575285635560" duration="12627000" />
       <workItem from="1575386611456" duration="64000" />
       <workItem from="1575449126669" duration="5354000" />
-      <workItem from="1575536701308" duration="7633000" />
+      <workItem from="1575536701308" duration="10199000" />
     </task>
     <servers />
   </component>
@@ -284,7 +269,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="49283000" />
+    <option name="totallyTimeSpent" value="51849000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -534,8 +519,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/slg/Gui.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="469">
-          <caret line="118" lean-forward="true" selection-start-line="118" selection-end-line="118" />
+        <state relative-caret-position="112">
+          <caret line="113" column="53" lean-forward="true" selection-start-line="113" selection-start-column="53" selection-end-line="113" selection-end-column="53" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1419#1420#0" expanded="true" />
@@ -544,20 +529,17 @@
             <element signature="e#1309#1310#0" expanded="true" />
             <element signature="e#962#963#0" expanded="true" />
             <element signature="e#1005#1006#0" expanded="true" />
-            <element signature="e#1635#1636#0" expanded="true" />
-            <element signature="e#1685#1686#0" expanded="true" />
-            <element signature="e#2346#2347#0" expanded="true" />
-            <element signature="e#2365#2366#0" expanded="true" />
-            <element signature="e#2989#2990#0" expanded="true" />
-            <element signature="e#3027#3028#0" expanded="true" />
+            <element signature="e#3551#3552#0" expanded="true" />
+            <element signature="e#3648#3649#0" expanded="true" />
+            <element signature="e#3723#3724#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/slg/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
-          <caret line="409" lean-forward="true" selection-start-line="409" selection-end-line="409" />
+        <state relative-caret-position="252">
+          <caret line="378" column="45" lean-forward="true" selection-start-line="378" selection-start-column="45" selection-end-line="378" selection-end-column="45" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1089#1090#0" expanded="true" />

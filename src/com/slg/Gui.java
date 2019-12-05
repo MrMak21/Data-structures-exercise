@@ -1,13 +1,17 @@
 package com.slg;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
 public class Gui {
     JTextField area1;
     JTextField area2;
-    JLabel resultLabel;
+    JLabel resultLabel,imageLabel;
     JButton createTextFileBtn,createDiagramBtn;
     JFrame frame;
 
@@ -20,25 +24,35 @@ public class Gui {
 
     public void showGui() {
         frame = new JFrame();
-        JButton b = new JButton("click");
+        JButton b = new JButton("Search");
         area1 = new JTextField();
         area2 = new JTextField();
         resultLabel = new JLabel("",SwingConstants.CENTER);
         createTextFileBtn = new JButton("Create Text File");
         createDiagramBtn = new JButton("Create Diagram Tree");
-        JLabel labelText = new JLabel("Please give me 2 names",SwingConstants.CENTER);
+        JLabel labelText = new JLabel("Please give 2 names",SwingConstants.CENTER);
 
-        labelText.setBounds(100,150,200,20);
-        resultLabel.setBounds(50,300,300,50);
-        createTextFileBtn.setBounds(10,380,200,30);
-        createDiagramBtn.setBounds(10,420,200,30);
+        try {
+            BufferedImage myPicture = ImageIO.read(new File(Main.findPath() + "\\exer_image.png"));
+            imageLabel = new JLabel(new ImageIcon(myPicture));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        labelText.setBounds(220,350,200,20);
+        resultLabel.setBounds(162,480,300,50);
+        createTextFileBtn.setBounds(10,550,200,30);
+        createDiagramBtn.setBounds(10,590,200,30);
+        imageLabel.setBounds(0,0,610,350);
 
 
-        area1.setBounds(100,180,100,40);
-        area2.setBounds(210,180,100,40);
+        area1.setBounds(210,380,100,40);
+        area2.setBounds(320,380,100,40);
 
-        b.setBounds(150,250,100,40);
+        b.setBounds(265,430,100,40);
 
+        frame.setTitle("Duck Family Tree");
+        frame.add(imageLabel);
         frame.add(createDiagramBtn);
         frame.add(createTextFileBtn);
         frame.add(resultLabel);
@@ -46,9 +60,12 @@ public class Gui {
         frame.add(area1);
         frame.add(area2);
         frame.add(b);
-        frame.setSize(400,500);
+        frame.setSize(630,700);
         frame.setLayout(null);
         frame.setVisible(true);
+
+        //Listener fot Enter keyboard btn
+        frame.getRootPane().setDefaultButton(b);
 
 
 
@@ -97,9 +114,11 @@ public class Gui {
             name2 = area2.getText();
         }
 
-        if (name1 != null && name2 != null) {
+        if (!name1.equals("") && !name2.equals("")) {
             String relation = findRelation(name1,name2);
             resultLabel.setText(relation);
+        } else {
+            JOptionPane.showMessageDialog(frame,"Please fill in the fields","Error",JOptionPane.OK_OPTION);
         }
     }
 
