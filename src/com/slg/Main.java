@@ -85,6 +85,7 @@ public class Main {
         }
     }
 
+
     public static void addToGraph(String name1, String name2, String relation) {
         if (relation.equals(GraphVizUtils.MARRIED)) {
             sb1.append(" \n " + "\"" + name1 + "\"" + " -> " + "\"" + name2 + "\" " + "[label=" + relation + " " + GraphVizUtils.MARRIED_COLOR + "];" );

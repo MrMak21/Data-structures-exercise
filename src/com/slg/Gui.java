@@ -40,7 +40,7 @@ public class Gui {
         }
 
         labelText.setBounds(220,350,200,20);
-        resultLabel.setBounds(162,480,300,50);
+        resultLabel.setBounds(65,480,500,50);
         createTextFileBtn.setBounds(10,550,200,30);
         createDiagramBtn.setBounds(10,590,200,30);
         imageLabel.setBounds(0,0,610,350);
@@ -96,12 +96,12 @@ public class Gui {
 
     private void createDiagram() {
         mCreateDiagram();
-        JOptionPane.showConfirmDialog(frame,"Png diagram created succesfully ","Info",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showConfirmDialog(frame,"Png diagram created succesfully\nYou will find it in the project folder","Info",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
     }
 
     private void showDialog() {
         writeFileForPeople();
-        JOptionPane.showConfirmDialog(frame,"File Created Succesfully","Info",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showConfirmDialog(frame,"File Created Succesfully\nYou will find it in the project folder","Info",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
     }
 
     private void makeClick() {
